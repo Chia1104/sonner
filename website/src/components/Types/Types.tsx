@@ -77,7 +77,7 @@ const allTypes = [
     name: 'Promise',
     snippet: `const promise = () => new Promise((resolve) => setTimeout(resolve, 2000));
 
-toast.promise(promise, {
+toast.promise<{ name: string }>(promise, {
   loading: 'Loading...',
   success: (data) => {
     return ${promiseCode};
@@ -85,7 +85,7 @@ toast.promise(promise, {
   error: 'Error',
 });`,
     action: () =>
-      toast.promise(
+      toast.promise<{ name: string }>(
         () =>
           new Promise((resolve) => {
             setTimeout(() => {

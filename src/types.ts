@@ -2,12 +2,12 @@ import React from 'react';
 
 export type ToastTypes = 'normal' | 'action' | 'success' | 'error' | 'loading';
 
-export type PromiseT = Promise<any> | (() => Promise<any>);
+export type PromiseT<TData = any> = Promise<TData> | (() => Promise<TData>);
 
-export type PromiseData = ExternalToast & {
+export type PromiseData<TData = any, TError = any> = ExternalToast & {
   loading: string | React.ReactNode;
-  success: string | React.ReactNode | ((data: any) => React.ReactNode | string);
-  error: string | React.ReactNode | ((error: any) => React.ReactNode | string);
+  success: string | React.ReactNode | ((data: TData) => React.ReactNode | string);
+  error: string | React.ReactNode | ((error: TError) => React.ReactNode | string);
 };
 
 export interface ToastT {

@@ -56,7 +56,7 @@ class Observer {
     return id;
   };
 
-  promise = (promise: PromiseT, data?: PromiseData) => {
+  promise = <TData = any, TError = any>(promise: PromiseT<TData>, data?: PromiseData<TData, TError>) => {
     const id = data?.id || toastsCounter++;
     this.publish({ ...data, promise, id });
     return id;
